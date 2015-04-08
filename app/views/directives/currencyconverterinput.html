@@ -1,0 +1,32 @@
+<!-- <div class="input-group">
+<div class="input-group-btn">
+<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{vm.currency.label}} <span class="caret"></span></button>
+<ul class="dropdown-menu" role="menu">
+<li ng-class="{active: currentCurrency.label === vm.currency.label }" ng-repeat="currentCurrency in currencies track by $index">
+<a href="" ng-click="vm.selectNewCurrency(currentCurrency)">{{currentCurrency.label}}: {{currentCurrency.text}}</a>
+</li>
+</ul>
+</div>
+<input type="text" class="form-control" aria-label="..." placeholder="{{vm.currency.text}}" ng-model="input" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 250, 'blur': 0} }">
+</div> -->
+
+<div class="form-group">
+    <div class="dropdown dropdown-scroll btn-block">
+        <button class="btn btn-default dropdown-toggle btn-block" type="button" data-toggle="dropdown"><img src="images/blank.png" style="width: 17px; height: 12px; vertical-align: middle;" class="sprite {{vm.currency.label}}_lille"> {{vm.currency.label}}: {{vm.currency.text}} <span class="caret"></span></button>
+        <ul class="dropdown-menu btn-block" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation">
+                <div class="input-group input-group-sm search-control"> <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-search"></span>
+                </span>
+                <input type="text" class="form-control" placeholder="Search..." ng-model="vm.query"></input>
+            </div>
+            </li>
+            <li role="presentation" ng-repeat='currentCurrency in currencies | filter:vm.queryPredicate'>
+                <a href="" ng-click="vm.selectNewCurrency(currentCurrency)"><img src="images/blank.png" style="width: 17px; height: 12px; vertical-align: middle;" class="sprite {{currentCurrency.label}}_lille"> {{currentCurrency.label}}: {{currentCurrency.text}}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="form-group">
+    <input type="text" class="form-control" aria-label="..." placeholder="{{vm.currency.text}}" ng-model="input" ng-focus="vm.takeFocus()" ng-blur="vm.releaseFocus()">
+</div>

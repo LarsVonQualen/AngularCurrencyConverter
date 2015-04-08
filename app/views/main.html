@@ -7,35 +7,15 @@
 <div class="row">
     <div class="col-sm-12 text-center">
         <div class="row">
-            <div class="col-sm-12" ng-if="mainViewModel.loadingCurrencies">
+            <div class="col-sm-12" ng-if="vm.loadingCurrencies">
                 Loading currencies... <i class="fa fa-circle-o-notch fa-spin"></i>
             </div>
-            <div class="col-sm-12 col-md-6" ng-if="!mainViewModel.loadingCurrencies">
-                <div class="input-group">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{mainViewModel.leftCurrency.label}} <span class="caret"></span></button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li ng-class="{active: currency.label === mainViewModel.leftCurrency.label }" ng-repeat="currency in mainViewModel.currencies track by $index">
-                                <a href="" ng-click="mainViewModel.selectLeftCurrency(currency)">{{currency.label}}: {{currency.text}}</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <input type="text" class="form-control" aria-label="..." placeholder="{{mainViewModel.leftCurrency.text}}" ng-model="mainViewModel.leftInput" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 250, 'blur': 0} }">
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6" ng-if="!mainViewModel.loadingCurrencies">
-                <div class="input-group">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{mainViewModel.rightCurrency.label}} <span class="caret"></span></button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li ng-class="{active: currency.label === mainViewModel.rightCurrency.label }" ng-repeat="currency in mainViewModel.currencies track by $index">
-                                <a href="" ng-click="mainViewModel.selectRightCurrency(currency)">{{currency.label}}: {{currency.text}}</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <input type="text" class="form-control" aria-label="..." placeholder="{{mainViewModel.rightCurrency.text}}" ng-model="mainViewModel.rightInput" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }">
-                </div>
-            </div>
+            <x-currency-converter   ng-if="!vm.loadingCurrencies"
+                                    currencies="vm.currencies"
+                                    left-currency="vm.leftCurrency"
+                                    left-input="vm.leftInput"
+                                    right-currency="vm.rightCurrency",
+                                    right-input="vm.rightInput"></x-currency-converter>
         </div>
     </div>
 </div>
