@@ -8,10 +8,6 @@
  * Controller of the angularCurrencyConverterApp
  */
 angular.module('angularCurrencyConverterApp')
-  .controller('AboutController', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('AboutController', function () {
+
   });

@@ -11,6 +11,6 @@ angular.module('angularCurrencyConverterApp')
   .constant('EnviromentConstants', {
       OpenExchangeRatesBaseUrl: 'http://openexchangerates.org/api/',
       OpenExchangeRatesAppId: 'ce5c79a030494d33a89c3c9b5e969078',
-      DefaultLeftCurrency: 'EUR',
-      DefaultRightCurrency: 'DKK'
+      DefaultLeftCurrency: 'DKK',
+      DefaultRightCurrency: 'EUR'
   });

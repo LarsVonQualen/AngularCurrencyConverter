@@ -25,11 +25,12 @@ angular.module('angularCurrencyConverterApp')
 
         $scope.$watch('input', function (newValue) {
           if (newValue && $scope.doUpdate) {
-            $scope.output = OpenExchangeRatesService.convert(newValue, vm.currency, $scope.targetCurrency);
+            $scope.output = OpenExchangeRatesService.convert(newValue, $scope.targetCurrency, $scope.currency);
+          } else if (!newValue && $scope.doUpdate) {
+            $scope.output = '';
           }
         });
 
-        vm.currency = $scope.currency;
         vm.query = '';
 
         vm.takeFocus = function () {
@@ -41,13 +42,16 @@ angular.module('angularCurrencyConverterApp')
         };
 
         vm.selectNewCurrency = function (currency) {
-          vm.currency = currency;
-          $scope.output = OpenExchangeRatesService.convert($scope.input, vm.currency, $scope.targetCurrency);
+          $scope.currency = currency;
+
+          if ($scope.output.length) {
+            $scope.input = OpenExchangeRatesService.convert($scope.output, $scope.currency, $scope.targetCurrency);
+          }
         };
 
         vm.queryPredicate = function (currency) {
           if (vm.query.length > 1) {
-            var querys = vm.query.toLowerCase().split(" ");
+            var querys = vm.query.toLowerCase().split(' ');
             var result = querys.filter(function (q) {
               return currency.label.toLowerCase().indexOf(q) > -1 || currency.text.toLowerCase().indexOf(q) > -1;
             });
