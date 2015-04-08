@@ -1,23 +1,41 @@
 <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+    <h1>Currency Converter</h1>
+    <p class="lead">
+        Exchange rates fetched from <a href="https://openexchangerates.org">openexchangerates.org</a>...
+    </p>
 </div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+<div class="row">
+    <div class="col-sm-12 text-center">
+        <div class="row">
+            <div class="col-sm-12" ng-if="mainViewModel.loadingCurrencies">
+                Loading currencies... <i class="fa fa-circle-o-notch fa-spin"></i>
+            </div>
+            <div class="col-sm-12 col-md-6" ng-if="!mainViewModel.loadingCurrencies">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{mainViewModel.leftCurrency.label}} <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-class="{active: currency.label === mainViewModel.leftCurrency.label }" ng-repeat="currency in mainViewModel.currencies track by $index">
+                                <a href="" ng-click="mainViewModel.selectLeftCurrency(currency)">{{currency.label}}: {{currency.text}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <input type="text" class="form-control" aria-label="..." placeholder="{{mainViewModel.leftCurrency.text}}" ng-model="mainViewModel.leftInput" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 250, 'blur': 0} }">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6" ng-if="!mainViewModel.loadingCurrencies">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{mainViewModel.rightCurrency.label}} <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-class="{active: currency.label === mainViewModel.rightCurrency.label }" ng-repeat="currency in mainViewModel.currencies track by $index">
+                                <a href="" ng-click="mainViewModel.selectRightCurrency(currency)">{{currency.label}}: {{currency.text}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <input type="text" class="form-control" aria-label="..." placeholder="{{mainViewModel.rightCurrency.text}}" ng-model="mainViewModel.rightInput" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

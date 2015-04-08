@@ -19,6 +19,9 @@
 You should now be able to spin up the project:
   - `grunt serve`
 
+If you want to run your test suite:
+  - `grunt test`
+
 ## OS X
 
 If you are running with vanilla Node.js and NOT using Node Version Manager, you will have prefix most of the commands with `sudo`, specifically every `npm install -g <package>` and `gem install <package>` command.
@@ -40,4 +43,8 @@ If you are running with vanilla Node.js and NOT using Node Version Manager, you 
 
 You should now be able to spin up the project:
   - `grunt serve`
+
+If you want to run your test suite:
+  - `grunt test`
+
 
