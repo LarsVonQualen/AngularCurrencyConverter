@@ -14,6 +14,7 @@
   - `npm install -g bower`
 - In the folder where you checked out the repo run:
   - `npm install`
+  - `bower install`
 
 You should now be able to spin up the project:
   - `grunt serve`
@@ -35,6 +36,7 @@ If you are running with vanilla Node.js and NOT using Node Version Manager, you 
   - `npm install -g bower`
 - In the folder where you checked out the repo run:
   - `npm install`
+  - `bower install`
 
 You should now be able to spin up the project:
   - `grunt serve`
