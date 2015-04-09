@@ -22,8 +22,8 @@ angular.module('angularCurrencyConverterApp')
       controller: function () {
         var vm = this;
 
-        vm.leftActive = false;
-        vm.rightActive = false;
+        vm.leftFocused = false;
+        vm.rightFocused = false;
       }
     };
   });

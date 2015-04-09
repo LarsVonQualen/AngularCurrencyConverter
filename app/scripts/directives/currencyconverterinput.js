@@ -17,35 +17,29 @@ angular.module('angularCurrencyConverterApp')
         targetCurrency: '=',
         input: '=',
         output: '=',
-        doUpdate: '='
+        doUpdate: '=',
+        tabIndex: '='
       },
       controllerAs: 'vm',
-      controller: function ($scope, OpenExchangeRatesService) {
+      controller: function ($scope, $filter) {
         var vm = this;
 
-        $scope.$watch('input', function (newValue) {
-          if (newValue && $scope.doUpdate) {
-            $scope.output = OpenExchangeRatesService.convert(newValue, $scope.targetCurrency, $scope.currency);
-          } else if (!newValue && $scope.doUpdate) {
-            $scope.output = '';
-          }
-        });
-
         vm.query = '';
+        vm.currenciesSearchResult = [];
 
         vm.takeFocus = function () {
-          $scope.doUpdate = true;
+          $scope.hasFocus = true;
         };
 
         vm.releaseFocus = function () {
-          $scope.doUpdate = false;
+          $scope.hasFocus = false;
         };
 
         vm.selectNewCurrency = function (currency) {
           $scope.currency = currency;
 
           if ($scope.output.length) {
-            $scope.input = OpenExchangeRatesService.convert($scope.output, $scope.currency, $scope.targetCurrency);
+            $scope.input = $filter('convertCurrency')($scope.output, $scope.targetCurrency, $scope.currency);
           }
         };
 
@@ -59,6 +53,22 @@ angular.module('angularCurrencyConverterApp')
             return result.length !== 0;
           }
         };
+
+        //// Scope based watcher - normal
+        $scope.$watch('input', function (newValue) {
+          if (newValue && $scope.hasFocus) {
+            $scope.output = $filter('convertCurrency')(newValue, $scope.currency, $scope.targetCurrency);
+          } else if (!newValue && $scope.doUpdate) {
+            $scope.output = '';
+          }
+        });
+
+        //// controllerAs based watcher - not normal
+        $scope.$watch(function () {
+            return vm.query;
+        }, function (newValue) {
+            vm.currenciesSearchResult = $filter('filter')($scope.currencies, vm.queryPredicate);
+        });
       },
       link: function ($scope, $element) {
         $element.find('.dropdown-menu input').on('click', function (e) {
