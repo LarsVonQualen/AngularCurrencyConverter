@@ -17,13 +17,6 @@ angular.module('angularCurrencyConverterApp')
         rightCurrency: '=',
         rightInput: '='
       },
-      restrict: 'E',
-      controllerAs: 'vm',
-      controller: function () {
-        var vm = this;
-
-        vm.leftFocused = false;
-        vm.rightFocused = false;
-      }
+      restrict: 'E'
     };
   });

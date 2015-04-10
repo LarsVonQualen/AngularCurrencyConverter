@@ -22,17 +22,17 @@ angular.module('angularCurrencyConverterApp')
       },
       controllerAs: 'vm',
       controller: function ($scope, $filter) {
-        var vm = this;
+        var vm = this, hasFocus = false;
 
         vm.query = '';
         vm.currenciesSearchResult = [];
 
         vm.takeFocus = function () {
-          $scope.hasFocus = true;
+          hasFocus = true;
         };
 
         vm.releaseFocus = function () {
-          $scope.hasFocus = false;
+          hasFocus = false;
         };
 
         vm.selectNewCurrency = function (currency) {
@@ -56,7 +56,7 @@ angular.module('angularCurrencyConverterApp')
 
         //// Scope based watcher - normal
         $scope.$watch('input', function (newValue) {
-          if (newValue && $scope.hasFocus) {
+          if (newValue && hasFocus) {
             $scope.output = $filter('convertCurrency')(newValue, $scope.currency, $scope.targetCurrency);
           } else if (!newValue && $scope.doUpdate) {
             $scope.output = '';
