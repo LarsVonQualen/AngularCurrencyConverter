@@ -17,7 +17,6 @@ angular.module('angularCurrencyConverterApp')
         targetCurrency: '=',
         input: '=',
         output: '=',
-        doUpdate: '=',
         tabIndex: '='
       },
       controllerAs: 'vm',
@@ -58,7 +57,7 @@ angular.module('angularCurrencyConverterApp')
         $scope.$watch('input', function (newValue) {
           if (newValue && hasFocus) {
             $scope.output = $filter('convertCurrency')(newValue, $scope.currency, $scope.targetCurrency);
-          } else if (!newValue && $scope.doUpdate) {
+        } else if (!newValue && hasFocus) {
             $scope.output = '';
           }
         });
