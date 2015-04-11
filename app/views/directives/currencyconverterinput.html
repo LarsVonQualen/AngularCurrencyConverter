@@ -9,12 +9,12 @@
                 <input type="text" class="form-control" placeholder="Search..." ng-model="vm.query"></input>
             </div>
             </li>
-            <li role="presentation" ng-repeat='currentCurrency in currencies | filter:vm.queryPredicate'>
+            <li role="presentation" ng-repeat='currentCurrency in vm.currenciesSearchResult'>
                 <a href="" ng-click="vm.selectNewCurrency(currentCurrency)"><img src="images/blank.png" style="width: 17px; height: 12px; vertical-align: middle;" class="sprite {{currentCurrency.label}}_lille"> {{currentCurrency.label}}: {{currentCurrency.text}}</a>
             </li>
         </ul>
     </div>
 </div>
 <div class="form-group">
-    <input type="text" class="form-control" aria-label="..." placeholder="{{currency.text}}" ng-model="input" ng-focus="vm.takeFocus()" ng-blur="vm.releaseFocus()">
+    <input type="text" class="form-control" aria-label="..." placeholder="{{currency.text}}" ng-model="input" ng-focus="vm.takeFocus()" ng-blur="vm.releaseFocus()" tabindex="{{tabIndex}}">
 </div>
