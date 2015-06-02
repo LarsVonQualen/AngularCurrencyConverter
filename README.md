@@ -1,5 +1,7 @@
 # AngularCurrencyConverter
 
+This repo holds a demo app i created for an internal Angular course at IT Minds. The corresponding slides can be found at: http://larsvonqualen.github.io/AngularCurrencyConverter/
+
 ## Windows
 
 - Install Node from https://nodejs.org
