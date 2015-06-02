@@ -1,6 +1,6 @@
 <div class="form-group">
     <div class="dropdown dropdown-scroll btn-block">
-        <button class="btn btn-default dropdown-toggle btn-block" type="button" data-toggle="dropdown"><img src="images/blank.png" style="width: 17px; height: 12px; vertical-align: middle;" class="sprite {{currency.label}}_lille"> {{currency.label}}: {{currency.text}} <span class="caret"></span></button>
+        <button class="btn btn-default dropdown-toggle btn-block" type="button" data-toggle="dropdown"><img ng-src="images/blank.png" style="width: 17px; height: 12px; vertical-align: middle;" class="sprite {{currency.label}}_lille"> {{currency.label}}: {{currency.text}} <span class="caret"></span></button>
         <ul class="dropdown-menu btn-block" role="menu" aria-labelledby="dropdownMenu1">
             <li role="presentation">
                 <div class="input-group input-group-sm search-control"> <span class="input-group-addon">
@@ -10,7 +10,7 @@
             </div>
             </li>
             <li role="presentation" ng-repeat='currentCurrency in vm.currenciesSearchResult'>
-                <a href="" ng-click="vm.selectNewCurrency(currentCurrency)"><img src="images/blank.png" style="width: 17px; height: 12px; vertical-align: middle;" class="sprite {{currentCurrency.label}}_lille"> {{currentCurrency.label}}: {{currentCurrency.text}}</a>
+                <a href="" ng-click="vm.selectNewCurrency(currentCurrency)"><img ng-src="images/blank.png" style="width: 17px; height: 12px; vertical-align: middle;" class="sprite {{currentCurrency.label}}_lille"> {{currentCurrency.label}}: {{currentCurrency.text}}</a>
             </li>
         </ul>
     </div>
